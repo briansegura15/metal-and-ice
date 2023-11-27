@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
+const CocktailSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -13,7 +13,11 @@ const PostSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  caption: {
+  ingredients: {
+    type: String,
+    required: true,
+  },
+  directions: {
     type: String,
     required: true,
   },
@@ -31,5 +35,5 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
-//MongoDB Collection named here - will give lowercase plural of name 
-module.exports = mongoose.model("Post", PostSchema);
+//MongoDB Collection named here - will give lowercase plural of name
+module.exports = mongoose.model("Cocktail", CocktailSchema);
