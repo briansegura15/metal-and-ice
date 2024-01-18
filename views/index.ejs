@@ -1,11 +1,36 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
+<div class="navbar bg-custom-color">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl brand">Metal & Ice</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/login" class="font-bold"> Login</a></li>
+      <li><a href="/signup" class="font-bold"> Signup</a></li>
+    </ul>
+  </div>
+</div>
+<div
+  class="hero min-h-screen"
+  style="background-image: url(/imgs/homepagebackground.jpg)"
+>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center text-neutral-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-4xl font-bold">
+        Straight up cocktails with only their ingredients and instructions.
+      </h1>
+      <p class="mb-5 text-2xl index-desc">
+        For the pursuit of the perfect mix, hold the text.
+      </p>
+      <a href="">
+        <button class="btn bg-white-300 hover:bg-white-900 sm:btn-sm md:btn-md">
+          Get Started
+        </button>
+      </a>
     </div>
-</main>
-    
+  </div>
+</div>
 
 <%- include('partials/footer') -%>
