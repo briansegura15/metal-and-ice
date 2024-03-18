@@ -29,7 +29,7 @@
 }
 
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* SIGNUP PAGE */
@@ -83,3 +83,23 @@ body {
 .sign-up-button {
   width: 75% !important;
 } */
+
+/* profile page */
+
+.user-container {
+  background-color: #e09b3e;
+  height: 150px;
+}
+
+.profile-container {
+  /* min-height: 100vh !important;
+  overflow-y: auto; */
+}
+
+.cocktail-form-container {
+  background-color: #e09b3e;
+}
+
+.profile-form-container {
+  width: 45rem;
+}

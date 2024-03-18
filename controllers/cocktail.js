@@ -43,6 +43,10 @@ module.exports = {
   },
   createCocktail: async (req, res) => {
     try {
+      if (!req.file) {
+        console.log("No file uploaded");
+        return res.redirect("/profile");
+      }
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
@@ -62,6 +66,7 @@ module.exports = {
       console.log(err);
     }
   },
+
   favoriteCocktail: async (req, res) => {
     try {
       await Favorite.create({
@@ -95,7 +100,7 @@ module.exports = {
       // Delete image from cloudinary
       await cloudinary.uploader.destroy(cocktail.cloudinaryId);
       // Delete post from db
-      await Cocktail.remove({_id: req.params.id});
+      await Cocktail.deleteOne({_id: req.params.id});
       console.log("Deleted Cocktail");
       res.redirect("/profile");
     } catch (err) {
