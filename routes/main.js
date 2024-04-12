@@ -2,11 +2,13 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
+const searchController = require("../controllers/search");
 const cocktailController = require("../controllers/cocktail");
 const {ensureAuth} = require("../middleware/auth");
 
 //Main Routes
 router.get("/", homeController.getIndex);
+router.get("/search", searchController.getSearch);
 router.get("/profile", ensureAuth, cocktailController.getProfile);
 router.get("/favorites", ensureAuth, cocktailController.getFavorites);
 

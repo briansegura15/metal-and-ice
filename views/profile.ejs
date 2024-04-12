@@ -8,22 +8,28 @@
                   <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </div>
               </div>
-              <div class="user-info flex justify-between ml-10">
+              <div class="user-info flex flex-col justify-between ml-10">
                 <div>
-                  <p class="text-2xl font-bold mb-2"><%= user.userName %></p>
+                  <div class="flex items-center">
+                   
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 mr-2"><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/></svg>
+                      <p class="text-2xl font-bold mb-2"><%= user.userName %></p>
+                    </div>
+                  </div>
                   <div class="flex justify-center items-center"> 
                     <p class=" flex items-center mb-2"> 
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                       </svg>
-                      <%= user.email %></p></div>
+                      <%= user.email %></p>
+                    </div>
                   </div>
                 <div>
-                  <a href="/logout" class="col-3 w-32 btn btn-xs sm:btn-sm btn-success shadow-lg">Logout</a>
+                  <a href="/logout" class="col-3 ml-8 w-32 btn btn-xs sm:btn-sm btn-success shadow-lg">Logout</a>
                 </div>
               </div>
           </div>
-          <div class="mt-5 mb-10 cocktail-form-container rounded-md flex justify-center content-center items-center">
+          <div class="mt-5 mb-5 cocktail-form-container rounded-md flex justify-center content-center items-center">
             <div class="flex flex-col justify-center">
               <h2 class="text-3xl mx-auto mb-5 mt-5">Add a Cocktail</h2>
               <form class="flex flex-col gap-5" action="/cocktail/createCocktail" enctype="multipart/form-data" method="POST">
@@ -55,26 +61,42 @@
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clip-rule="evenodd" /></svg>
                   <input type="password" class="grow" value="password" />
                 </label> -->
-                <div  class="mb-3">
-                  <label for="imgUpload" class="form-label">Image</label>
+                <div class="mb-3 flex flex-col items-center">
+                  <label for="imgUpload" class="form-label text-2xl mb-2">Image</label>
                   <input type="file" class="form-control" id="imageUpload" name="file">
                 </div>
-                <button type="submit" class="btn btn-primary w-full mb-5" value="Upload">Submit</button>
+
+                <button type="submit" class="btn btn-outline w-full mb-5" value="Upload">Submit</button>
+
               </form>
             </div>
     </div>
 
-      <div><h3 class="text-3xl text-white text-center">View your cocktails below</h3></div>
+    <div class="flex justify-center">
+      <div class="bg-custom-color rounded-md w-1/2 items-center p-2.5">
+          <h3 class="text-3xl text-black text-center">View your cocktails below</h3>
+      </div>
+    </div>
 
       <div class="mb-10">
         <ul class="row list-unstyled">
         <% for(var i=0; i<cocktail.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
+          <li class="col-6 mt-5">
             <a href="/cocktail/<%= cocktail[i]._id%>">
-              <h2 class="text-4xl text-white mb-3 "><%= cocktail[i].title %></h2>
               <img class="img-fluid" src="<%= cocktail[i].image%>">
-              <p class="text-2xl text-white ">Ingredients: <%= cocktail[i].ingredients %></p>
-              <p class="text-2xl text-white ">Directions: <%= cocktail[i].directions %></p>
+              <h2 class="text-5xl text-white mb-3 index-desc "><%= cocktail[i].title %></h2>
+              <div class="recipe-body flex justify-between bg-custom-color mt-5 p-5">
+                <div class="w-1/2">
+                  <h3 class="text-2xl text-black mb-2">Ingredients:</h3>
+                  <ul class="list-disc list-inside text-black"> <%= cocktail[i].ingredients %>
+                    <!-- <li class="mb-1"><%= cocktail[i].ingredients %></li> -->
+                  </ul>
+                </div>
+                <div class="w-1/2">
+                  <h3 class="text-2xl text-black mb-2">Directions:</h3>
+                  <ul class="list-disc list-inside text-black"> <%= cocktail[i].directions %></ul>
+                </div>
+              </div>
             </a>
           </li>
         <% } %>
@@ -86,4 +108,16 @@
     </div>
   </div>
 </div>
+
+<!-- <div>
+  <h1>Find a Cocktail</h1>
+  <input type="text" name="" value="" id="cocktailName" placeholder="Cocktail Name">
+  <button type="button" name="button" id="cocktailButton">Get Cocktail</button>
+
+  <h2 id="cocktailTitle" >Name</h2>
+  <img id="cocktailImg" src="" alt="">
+  <h3 id="cocktailInstructions">Instructions</h3>
+</div> -->
+
+<script src="../public/js/main.js"></script>
 <%- include('partials/footer') -%>

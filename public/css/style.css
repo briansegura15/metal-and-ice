@@ -32,6 +32,14 @@ body {
   /* overflow: hidden; */
 }
 
+/* INDEX PAGE */
+
+.hero {
+  background-image: url("../imgs/homebackgroundimage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 /* SIGNUP PAGE */
 
 .main-container {
